@@ -1,0 +1,17 @@
+import Input from '../components/Input';
+import Textarea from '../components/Textarea';
+
+const Contact = () => {
+  return (
+    <div>
+      <form name="contact" data-netlify="true">
+        <Input type="text" name="name" label="Name" />
+        <Input type="email" name="email" label="Email" />
+        <Input type="tel" name="phone" label="Phone number" />
+        <Textarea name="description" label="Description" />
+      </form>
+    </div>
+  );
+};
+
+export default Contact;
