@@ -8,17 +8,17 @@ interface IParams extends ParsedUrlQuery {
 
 type Props = {
   data: {
-    title: string;
+    name: string;
   };
   content: string;
 };
 
-const dir = 'content/posts';
+const dir = 'content/artists';
 
-const BlogPost: NextPage<Props> = ({ data, content }) => {
+const Artist: NextPage<Props> = ({ data, content }) => {
   return (
     <div>
-      <h1>{data.title}</h1>
+      <h1>{data.name}</h1>
       <div>{content}</div>
     </div>
   );
@@ -55,4 +55,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 };
 
-export default BlogPost;
+export default Artist;

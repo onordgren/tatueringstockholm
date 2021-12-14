@@ -6,15 +6,15 @@ type Props = {
   slugs: string[];
 };
 
-const BlogIndex: NextPage<Props> = ({ slugs }) => {
+const ArtistsIndex: NextPage<Props> = ({ slugs }) => {
   return (
     <div>
-      <h1>Blog</h1>
+      <h1>Artists</h1>
       <div>
         <ul>
           {slugs.map((path) => (
             <li key={path}>
-              <Link href={`/blog/${path}`}>
+              <Link href={`/artists/${path}`}>
                 <a>{path}</a>
               </Link>
             </li>
@@ -27,7 +27,7 @@ const BlogIndex: NextPage<Props> = ({ slugs }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const dir = 'content/posts';
+    const dir = 'content/artists';
     const files = await getFiles({ dir });
     const slugs = getSlugs({ files });
 
@@ -45,4 +45,4 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 };
 
-export default BlogIndex;
+export default ArtistsIndex;

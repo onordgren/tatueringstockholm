@@ -22,3 +22,48 @@ collections:
     fields:
       - { label: 'Name', name: 'title', widget: 'string' }
       - { label: 'Description', name: 'body', widget: 'markdown' }
+  - name: 'pages'
+    label: 'Pages'
+    files:
+      - label: 'Home'
+        name: 'home'
+        file: 'content/pages/home.md'
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Body, name: body, widget: markdown }
+      - label: 'Contact'
+        name: 'contact'
+        file: 'content/pages/contact.md'
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Body, name: body, widget: markdown }
+      - label: 'Artists'
+        name: 'artists'
+        file: 'content/pages/artists.md'
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Body, name: body, widget: markdown }
+  - name: 'global'
+    label: 'Global'
+    files:
+      - label: 'Settings'
+        name: 'settings'
+        file: 'content/global/settings.md'
+        fields:
+          - { label: Title, name: title, widget: string }
+      - label: 'Contact'
+        name: 'contact'
+        file: 'content/global/contact.md'
+        fields:
+          - { label: Phone, name: phone, widget: string }
+          - { label: Email, name: email, widget: string }
+          - { label: Street address, name: street, widget: string }
+          - { label: Postal address, name: postal, widget: string }
+          - { label: Country, name: country, widget: string }
+      - label: 'Social media'
+        name: 'social'
+        file: 'content/global/social.md'
+        fields:
+          - { label: Facebook, name: facebook, widget: string }
+          - { label: Instagram, name: instagram, widget: string }
+          - { label: Twitter, name: twitter, widget: string }
