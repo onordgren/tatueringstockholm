@@ -11,39 +11,60 @@ type Props = {
     };
     content: string;
   };
+  contact: {
+    data: {
+      phone: string;
+      email: string;
+      street: string;
+      postal: string;
+      country: string;
+    };
+  };
 };
 
-const Contact: NextPage<Props> = ({ page }) => {
+const Contact: NextPage<Props> = ({ page, contact }) => {
   return (
     <div className="grid gap-4">
       <Title title={page.data.title} />
       <div>{page.content}</div>
-      <form name="contact" method="POST" data-netlify="true">
-        <input type="hidden" name="form-name" value="contact" />
-        <div className="grid gap-2">
-          <Input type="text" name="name" label="Name" />
-          <Input type="email" name="email" label="Email" />
-          <Input type="tel" name="phone" label="Phone number" />
-          <Textarea name="description" label="Description" />
-          <button type="submit">Send</button>
-        </div>
-      </form>
+      <div className="grid gap-4 grid-cols-2">
+        <section className="bg-neutral-700 p-4">
+          <form name="contact" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="contact" />
+            <div className="grid gap-4">
+              <Input type="text" name="name" label="Name" />
+              <Input type="email" name="email" label="Email" />
+              <Input type="tel" name="phone" label="Phone number" />
+              <Textarea name="description" label="Description" />
+              <button type="submit">Send</button>
+            </div>
+          </form>
+        </section>
+        <aside>
+          <div>{contact.data.phone}</div>
+          <div>{contact.data.email}</div>
+        </aside>
+      </div>
     </div>
   );
 };
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const dir = 'content/pages';
-
     const page = await getFileContent({
-      dir,
+      dir: 'content/pages',
+      fileName: 'contact',
+    });
+
+    const contact = await getFileContent({
+      dir: 'content/global',
       fileName: 'contact',
     });
 
     return {
       props: {
         page,
+        contact,
       },
     };
   } catch {
