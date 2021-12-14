@@ -21,6 +21,7 @@ collections:
     slug: '{{slug}}'
     fields:
       - { label: 'Name', name: 'title', widget: 'string' }
+      - { label: 'Guest', name: guest, widget: boolean }
       - { label: 'Description', name: 'body', widget: 'markdown' }
   - name: 'pages'
     label: 'Pages'
@@ -40,6 +41,12 @@ collections:
       - label: 'Artists'
         name: 'artists'
         file: 'content/pages/artists.md'
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Body, name: body, widget: markdown }
+      - label: 'Guests'
+        name: 'guests'
+        file: 'content/pages/guests.md'
         fields:
           - { label: Title, name: title, widget: string }
           - { label: Body, name: body, widget: markdown }

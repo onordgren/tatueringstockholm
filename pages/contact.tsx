@@ -3,6 +3,7 @@ import Input from '../components/Input';
 import Textarea from '../components/Textarea';
 import Title from '../components/Title';
 import { getFileContent } from '../helpers/files';
+import { Contact, Social } from '../types/global';
 
 type Props = {
   page: {
@@ -11,23 +12,16 @@ type Props = {
     };
     content: string;
   };
-  contact: {
-    data: {
-      phone: string;
-      email: string;
-      street: string;
-      postal: string;
-      country: string;
-    };
-  };
+  contact: Contact;
+  social: Social;
 };
 
-const Contact: NextPage<Props> = ({ page, contact }) => {
+const Contact: NextPage<Props> = ({ page, contact, social }) => {
   return (
     <div className="grid gap-4">
       <Title title={page.data.title} />
       <div>{page.content}</div>
-      <div className="grid gap-4 grid-cols-2">
+      <div className="grid gap-8 grid-cols-2 items-start">
         <section className="bg-neutral-700 p-4">
           <form name="contact" method="POST" data-netlify="true">
             <input type="hidden" name="form-name" value="contact" />
@@ -40,9 +34,20 @@ const Contact: NextPage<Props> = ({ page, contact }) => {
             </div>
           </form>
         </section>
-        <aside>
-          <div>{contact.data.phone}</div>
-          <div>{contact.data.email}</div>
+        <aside className="grid gap-4">
+          <div>
+            <ul>
+              <li>{social.data.facebook}</li>
+              <li>{social.data.instagram}</li>
+              <li>{social.data.twitter}</li>
+            </ul>
+          </div>
+          <div>
+            <a href={`tel:${contact.data.phone}`}>{contact.data.phone}</a>
+          </div>
+          <div>
+            <a href={`mailto:${contact.data.email}`}>{contact.data.email}</a>
+          </div>
         </aside>
       </div>
     </div>
@@ -61,10 +66,16 @@ export const getStaticProps: GetStaticProps = async () => {
       fileName: 'contact',
     });
 
+    const social = await getFileContent({
+      dir: 'content/global',
+      fileName: 'social',
+    });
+
     return {
       props: {
         page,
         contact,
+        social,
       },
     };
   } catch {

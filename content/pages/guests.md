@@ -1,5 +1,5 @@
 ---
-title: Artists
+title: Guests
 ---
 
 We are a group of tattoo artists who are based in Stockholm, Sweden.
