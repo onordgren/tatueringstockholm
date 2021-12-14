@@ -22,7 +22,6 @@ const Home: NextPage<Props> = ({ page }) => {
 export const getStaticProps: GetStaticProps = async () => {
   try {
     const dir = 'content/pages';
-
     const page = await getFileContent({
       dir,
       fileName: 'home',

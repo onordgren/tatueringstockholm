@@ -1,5 +1,6 @@
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import { ParsedUrlQuery } from 'querystring';
+import Title from '../../components/Title';
 import { getFileContent, getFiles, getSlugs } from '../../helpers/files';
 
 interface IParams extends ParsedUrlQuery {
@@ -18,7 +19,7 @@ const dir = 'content/artists';
 const Artist: NextPage<Props> = ({ data, content }) => {
   return (
     <div>
-      <h1>{data.name}</h1>
+      <Title title={data.name} />
       <div>{content}</div>
     </div>
   );

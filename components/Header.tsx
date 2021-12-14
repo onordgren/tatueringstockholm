@@ -1,10 +1,17 @@
 import Link from 'next/link';
 
-const Header = () => {
+type Props = {
+  title: string;
+};
+
+const Header = ({ title }: Props) => {
   return (
     <header>
+      <h1 className="text-6xl font-extrabold uppercase tracking-widest text-center py-10">
+        {title}
+      </h1>
       <nav>
-        <ul>
+        <ul className="flex justify-between">
           <li>
             <Link href="/">
               <a>Home</a>

@@ -1,5 +1,6 @@
 import type { NextPage, GetStaticProps } from 'next';
 import Link from 'next/link';
+import Title from '../../components/Title';
 import { getFileContent, getFiles, getSlugs } from '../../helpers/files';
 
 type Props = {
@@ -14,15 +15,15 @@ type Props = {
 
 const ArtistsIndex: NextPage<Props> = ({ slugs, page }) => {
   return (
-    <div>
-      <h1>{page.data.title}</h1>
+    <div className="grid gap-2">
+      <Title title={page.data.title} />
       <div>{page.content}</div>
       <div>
         <ul>
           {slugs.map((path) => (
             <li key={path}>
               <Link href={`/artists/${path}`}>
-                <a>{path}</a>
+                <a className="text-blue-600">{path}</a>
               </Link>
             </li>
           ))}

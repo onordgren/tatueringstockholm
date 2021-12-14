@@ -3,7 +3,7 @@ interface LabelProps {
 }
 
 const Label = ({ label }: LabelProps) => (
-  <span className="text-neutral-400">{label}</span>
+  <span className="text-neutral-200">{label}</span>
 );
 
 export default Label;

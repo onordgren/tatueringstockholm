@@ -1,6 +1,7 @@
 import { GetStaticProps, NextPage } from 'next';
 import Input from '../components/Input';
 import Textarea from '../components/Textarea';
+import Title from '../components/Title';
 import { getFileContent } from '../helpers/files';
 
 type Props = {
@@ -14,16 +15,18 @@ type Props = {
 
 const Contact: NextPage<Props> = ({ page }) => {
   return (
-    <div>
-      <h1>{page.data.title}</h1>
+    <div className="grid gap-4">
+      <Title title={page.data.title} />
       <div>{page.content}</div>
       <form name="contact" method="POST" data-netlify="true">
         <input type="hidden" name="form-name" value="contact" />
-        <Input type="text" name="name" label="Name" />
-        <Input type="email" name="email" label="Email" />
-        <Input type="tel" name="phone" label="Phone number" />
-        <Textarea name="description" label="Description" />
-        <button type="submit">Send</button>
+        <div className="grid gap-2">
+          <Input type="text" name="name" label="Name" />
+          <Input type="email" name="email" label="Email" />
+          <Input type="tel" name="phone" label="Phone number" />
+          <Textarea name="description" label="Description" />
+          <button type="submit">Send</button>
+        </div>
       </form>
     </div>
   );
