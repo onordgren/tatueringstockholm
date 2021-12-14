@@ -1,9 +1,42 @@
-import type { NextPage } from 'next'
+import type { NextPage, GetStaticProps } from 'next';
+import { promises as fs } from 'fs';
+import path from 'path';
+import Link from 'next/link';
 
-const BlogIndex: NextPage = () => {
+type Props = {
+  slugs: string[];
+};
+
+const BlogIndex: NextPage<Props> = ({ slugs }) => {
+  console.log(slugs);
   return (
-    <div>Blog</div>
-  )
-}
+    <div>
+      <h1>Blog</h1>
+      <div>
+        <ul>
+          {slugs.map((path) => (
+            <li key={path}>
+              <Link href={`/blog/${path}`}>
+                <a>{path}</a>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+};
 
-export default BlogIndex
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const dir = path.join(process.cwd(), '_posts/blog');
+  const files = await fs.readdir(dir);
+  const slugs = files.map((file) => path.parse(file).name);
+
+  return {
+    props: {
+      slugs,
+    },
+  };
+};
+
+export default BlogIndex;
