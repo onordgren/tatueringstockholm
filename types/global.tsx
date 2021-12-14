@@ -15,3 +15,12 @@ export type Contact = {
     country: string;
   };
 };
+
+export type Artist = {
+  slug: string;
+  data: {
+    title: string;
+    guest: boolean;
+  };
+  content: string;
+};

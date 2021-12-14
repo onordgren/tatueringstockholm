@@ -2,9 +2,10 @@ import type { NextPage, GetStaticProps } from 'next';
 import Link from 'next/link';
 import Title from 'components/Title';
 import { getFileContent, getFiles, getSlugs } from 'helpers/files';
+import { Artist } from 'types/global';
 
 type Props = {
-  guests: string[];
+  guests: Artist[];
   page: {
     data: {
       title: string;
@@ -21,9 +22,9 @@ const GuestsIndex: NextPage<Props> = ({ guests, page }) => {
       <div>
         <ul>
           {guests?.map((guest) => (
-            <li key={guest}>
-              <Link href={`/artists/${guest}`}>
-                <a className="text-blue-600">{guest}</a>
+            <li key={guest.slug}>
+              <Link href={`/artists/${guest.slug}`}>
+                <a className="text-blue-600">{guest.data.title}</a>
               </Link>
             </li>
           ))}
@@ -44,10 +45,14 @@ export const getStaticProps: GetStaticProps = async () => {
     });
     const guestProps = await Promise.all(
       slugs.map(async (slug) => {
-        return await getFileContent({
+        const props = await getFileContent({
           dir: 'content/artists',
           fileName: slug,
         });
+        return {
+          slug,
+          ...props,
+        };
       })
     );
 
@@ -55,8 +60,6 @@ export const getStaticProps: GetStaticProps = async () => {
       const { data } = guestProp;
       return data.guest;
     });
-
-    console.log(slugs);
 
     return {
       props: {
