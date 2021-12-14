@@ -25,8 +25,8 @@ const BlogIndex: NextPage<Props> = ({ data, content }) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { slug } = params as IParams;
-  if (slug) {
+  try {
+    const { slug } = params as IParams;
     const filePath = path.join(process.cwd(), 'content/posts', slug);
     const fileContents = await fs.readFile(`${filePath}.md`, 'utf8');
     const { data, content } = matter(fileContents);
@@ -36,7 +36,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         content,
       },
     };
-  } else {
+  } catch {
     return {
       notFound: true,
     };
@@ -44,15 +44,18 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const dir = path.join(process.cwd(), 'content/posts');
-  const files = await fs.readdir(dir);
-  const slugs = files.map((file) => path.parse(file).name);
+  try {
+    const dir = path.join(process.cwd(), 'content/posts');
+    const files = await fs.readdir(dir);
+    const slugs = files.map((file) => path.parse(file).name);
 
-  const paths = slugs.map((slug) => ({
-    params: { slug },
-  }));
-
-  return { paths, fallback: false };
+    const paths = slugs.map((slug) => ({
+      params: { slug },
+    }));
+    return { paths, fallback: false };
+  } catch {
+    return { paths: [], fallback: false };
+  }
 };
 
 export default BlogIndex;

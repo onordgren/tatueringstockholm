@@ -27,16 +27,24 @@ const BlogIndex: NextPage<Props> = ({ slugs }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const dir = path.join(process.cwd(), '_posts/blog');
-  const files = await fs.readdir(dir);
-  const slugs = files.map((file) => path.parse(file).name);
+export const getStaticProps: GetStaticProps = async () => {
+  try {
+    const dir = path.join(process.cwd(), 'content/posts');
+    const files = await fs.readdir(dir);
+    const slugs = files.map((file) => path.parse(file).name);
 
-  return {
-    props: {
-      slugs,
-    },
-  };
+    return {
+      props: {
+        slugs,
+      },
+    };
+  } catch {
+    return {
+      props: {
+        slugs: [],
+      },
+    };
+  }
 };
 
 export default BlogIndex;
