@@ -12,12 +12,16 @@ export const getSlugs = ({ files }: { files: string[] }) => {
 
 export const getFileContent = async ({
   dir,
-  slug,
+  fileName,
 }: {
   dir: string;
-  slug: string;
+  fileName: string;
 }) => {
-  const filePath = path.join(process.cwd(), dir, slug);
+  const filePath = path.join(process.cwd(), dir, fileName);
   const fileContents = await fs.readFile(`${filePath}.md`, 'utf8');
-  return matter(fileContents);
+  const { data, content } = matter(fileContents);
+  return {
+    data: JSON.parse(JSON.stringify(data)),
+    content,
+  };
 };

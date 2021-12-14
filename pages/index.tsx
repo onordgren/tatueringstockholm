@@ -1,9 +1,43 @@
-import type { NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next';
+import { getFileContent } from '../helpers/files';
 
-const Home: NextPage = () => {
+type Props = {
+  page: {
+    data: {
+      title: string;
+    };
+    content: string;
+  };
+};
+
+const Home: NextPage<Props> = ({ page }) => {
   return (
-    <div>Hello</div>
-  )
-}
+    <div>
+      <h1>{page.data.title}</h1>
+      <div>{page.content}</div>
+    </div>
+  );
+};
 
-export default Home
+export const getStaticProps: GetStaticProps = async () => {
+  try {
+    const dir = 'content/pages';
+
+    const page = await getFileContent({
+      dir,
+      fileName: 'home',
+    });
+
+    return {
+      props: {
+        page,
+      },
+    };
+  } catch {
+    return {
+      props: {},
+    };
+  }
+};
+
+export default Home;

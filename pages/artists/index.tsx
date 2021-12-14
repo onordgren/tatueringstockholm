@@ -1,15 +1,22 @@
 import type { NextPage, GetStaticProps } from 'next';
 import Link from 'next/link';
-import { getFiles, getSlugs } from '../../helpers/files';
+import { getFileContent, getFiles, getSlugs } from '../../helpers/files';
 
 type Props = {
   slugs: string[];
+  page: {
+    data: {
+      title: string;
+    };
+    content: string;
+  };
 };
 
-const ArtistsIndex: NextPage<Props> = ({ slugs }) => {
+const ArtistsIndex: NextPage<Props> = ({ slugs, page }) => {
   return (
     <div>
-      <h1>Artists</h1>
+      <h1>{page.data.title}</h1>
+      <div>{page.content}</div>
       <div>
         <ul>
           {slugs.map((path) => (
@@ -30,10 +37,15 @@ export const getStaticProps: GetStaticProps = async () => {
     const dir = 'content/artists';
     const files = await getFiles({ dir });
     const slugs = getSlugs({ files });
+    const page = await getFileContent({
+      dir: 'content/pages',
+      fileName: 'artists',
+    });
 
     return {
       props: {
         slugs,
+        page,
       },
     };
   } catch {

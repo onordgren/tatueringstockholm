@@ -27,10 +27,10 @@ const Artist: NextPage<Props> = ({ data, content }) => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
     const { slug } = params as IParams;
-    const { data, content } = await getFileContent({ dir, slug });
+    const { data, content } = await getFileContent({ dir, fileName: slug });
     return {
       props: {
-        data: JSON.parse(JSON.stringify(data)),
+        data,
         content,
       },
     };
