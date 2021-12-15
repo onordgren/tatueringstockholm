@@ -1,4 +1,5 @@
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next';
+import Image from 'next/image';
 import { ParsedUrlQuery } from 'querystring';
 import Title from '../../components/Title';
 import { getFileContent, getFiles, getSlugs } from '../../helpers/files';
@@ -10,6 +11,7 @@ interface IParams extends ParsedUrlQuery {
 type Props = {
   data: {
     title: string;
+    thumbnail: string;
   };
   content: string;
 };
@@ -20,6 +22,7 @@ const BlogPost: NextPage<Props> = ({ data, content }) => {
   return (
     <div>
       <Title title={data.title} />
+      <Image src={data.thumbnail} alt={data.title} width={200} height={200} />
       <div>{content}</div>
     </div>
   );
