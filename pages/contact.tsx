@@ -21,7 +21,7 @@ const Contact: NextPage<Props> = ({ page, contact, social }) => {
   return (
     <div className="grid gap-4">
       <Title title={page.data.title} />
-      <div>
+      <div className="prose text-neutral-100">
         <ReactMarkdown>{page?.content}</ReactMarkdown>
       </div>
       <div className="grid gap-8 grid-cols-2 items-start">

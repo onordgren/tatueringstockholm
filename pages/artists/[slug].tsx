@@ -1,5 +1,7 @@
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next';
+import Image from 'next/image';
 import { ParsedUrlQuery } from 'querystring';
+import ReactMarkdown from 'react-markdown';
 import Title from '../../components/Title';
 import { getFileContent, getFiles, getSlugs } from '../../helpers/files';
 
@@ -10,6 +12,7 @@ interface IParams extends ParsedUrlQuery {
 type Props = {
   data: {
     name: string;
+    gallery?: string[];
   };
   content: string;
 };
@@ -20,7 +23,18 @@ const Artist: NextPage<Props> = ({ data, content }) => {
   return (
     <div>
       <Title title={data.name} />
-      <div>{content}</div>
+      <div>
+        <ReactMarkdown>{content}</ReactMarkdown>
+      </div>
+      <div>
+        <ul>
+          {data.gallery?.map((image) => (
+            <li key={image}>
+              <Image src={image} width={640} height={800} alt={image} />
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

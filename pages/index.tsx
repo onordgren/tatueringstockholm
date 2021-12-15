@@ -15,7 +15,7 @@ const Home: NextPage<Props> = ({ page }) => {
   return (
     <div>
       <h1>{page.data.title}</h1>
-      <div>
+      <div className="prose text-neutral-100">
         <ReactMarkdown>{page?.content}</ReactMarkdown>
       </div>
     </div>

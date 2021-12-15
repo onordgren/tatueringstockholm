@@ -18,7 +18,7 @@ const ArtistsIndex: NextPage<Props> = ({ slugs, page }) => {
   return (
     <div className="grid gap-2">
       <Title title={page.data.title} />
-      <div>
+      <div className="prose text-neutral-100">
         <ReactMarkdown>{page?.content}</ReactMarkdown>
       </div>
       <div>

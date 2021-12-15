@@ -1,6 +1,7 @@
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import Image from 'next/image';
 import { ParsedUrlQuery } from 'querystring';
+import ReactMarkdown from 'react-markdown';
 import Title from '../../components/Title';
 import { getFileContent, getFiles, getSlugs } from '../../helpers/files';
 
@@ -23,7 +24,9 @@ const BlogPost: NextPage<Props> = ({ data, content }) => {
     <div>
       <Title title={data.title} />
       <Image src={data.thumbnail} alt={data.title} width={200} height={200} />
-      <div>{content}</div>
+      <div className="prose text-neutral-100">
+        <ReactMarkdown>{content}</ReactMarkdown>
+      </div>
     </div>
   );
 };

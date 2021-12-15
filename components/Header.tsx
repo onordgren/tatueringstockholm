@@ -14,27 +14,27 @@ const Header = ({ title }: Props) => {
         <ul className="flex justify-between">
           <li>
             <Link href="/">
-              <a>Home</a>
+              <a className="font-bold uppercase text-neutral-200">Home</a>
             </Link>
           </li>
           <li>
             <Link href="/artists">
-              <a>Artists</a>
+              <a className="font-bold uppercase text-neutral-200">Artists</a>
             </Link>
           </li>
           <li>
             <Link href="/guests">
-              <a>Guests</a>
+              <a className="font-bold uppercase text-neutral-200">Guests</a>
             </Link>
           </li>
           <li>
             <Link href="/blog">
-              <a>Blog</a>
+              <a className="font-bold uppercase text-neutral-200">Blog</a>
             </Link>
           </li>
           <li>
             <Link href="/contact">
-              <a>Contact</a>
+              <a className="font-bold uppercase text-neutral-200">Contact</a>
             </Link>
           </li>
         </ul>
