@@ -1,9 +1,9 @@
 ---
 title: Tatuering Stockholm
 ---
-tatuering stockholm is an exclusive group of tattoo artists bringing you the very best quality tattoos in stockholm & around the world.
+Tatuering Stockholm is an exclusive group of tattoo artists bringing you the very best quality tattoos in Stockholm & around the world.
 
-each artist is a master of their own discipline and almost exclusively works within their preferred genre.
+Each artist is a master of their own discipline and almost exclusively works within their preferred genre.
 
-its time to re-think ink.\
-welcome to tatuering stockholm.
+Its time to re-think ink.\
+Welcome to Tatuering Stockholm.
