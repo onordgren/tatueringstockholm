@@ -1,5 +1,10 @@
 ---
 title: Mary Jane
+social:
+  facebook: facebook
+  instagram: instagram
+  twitter: twitter
+gallery: /images/2483a5_e394c929d18a499b8ce64145f6cc3b22_mv2.webp
 ---
 Mary Jane is a traveling artist who has been tattooing for over ten years.
 
