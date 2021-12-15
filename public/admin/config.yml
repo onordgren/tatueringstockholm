@@ -23,7 +23,12 @@ collections:
       - { label: 'Name', name: 'title', widget: 'string' }
       - { label: 'Guest', name: guest, widget: boolean }
       - { label: 'Description', name: 'body', widget: 'markdown' }
-      - { label: 'Gallery', name: 'gallery', widget: 'image' }
+      - {
+          label: 'Gallery',
+          name: 'gallery',
+          widget: 'image',
+          media_library: { config: { multiple: true } },
+        }
   - name: 'pages'
     label: 'Pages'
     files:

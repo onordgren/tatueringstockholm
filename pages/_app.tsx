@@ -5,7 +5,7 @@ import Header from '../components/Header';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto px-4">
       <Script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></Script>
       <div className="grid gap-12">
         <Header title={'Tatuering Stockholm'} />

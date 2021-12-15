@@ -7,7 +7,7 @@ type Props = {
 const Header = ({ title }: Props) => {
   return (
     <header>
-      <h1 className="text-6xl font-extrabold uppercase tracking-widest text-center py-10">
+      <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold uppercase tracking-widest text-center py-10">
         {title}
       </h1>
       <nav>
