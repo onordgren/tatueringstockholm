@@ -1,4 +1,5 @@
 import { GetStaticProps, NextPage } from 'next';
+import ReactMarkdown from 'react-markdown';
 import Input from '../components/Input';
 import Textarea from '../components/Textarea';
 import Title from '../components/Title';
@@ -20,7 +21,9 @@ const Contact: NextPage<Props> = ({ page, contact, social }) => {
   return (
     <div className="grid gap-4">
       <Title title={page.data.title} />
-      <div>{page.content}</div>
+      <div>
+        <ReactMarkdown>{page?.content}</ReactMarkdown>
+      </div>
       <div className="grid gap-8 grid-cols-2 items-start">
         <section className="bg-neutral-700 p-4">
           <form name="contact" method="POST" data-netlify="true">

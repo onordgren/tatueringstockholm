@@ -1,4 +1,5 @@
 import type { GetStaticProps, NextPage } from 'next';
+import ReactMarkdown from 'react-markdown';
 import { getFileContent } from '../helpers/files';
 
 type Props = {
@@ -14,7 +15,9 @@ const Home: NextPage<Props> = ({ page }) => {
   return (
     <div>
       <h1>{page.data.title}</h1>
-      <div>{page.content}</div>
+      <div>
+        <ReactMarkdown>{page?.content}</ReactMarkdown>
+      </div>
     </div>
   );
 };

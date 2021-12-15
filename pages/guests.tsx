@@ -1,4 +1,5 @@
 import type { NextPage, GetStaticProps } from 'next';
+import ReactMarkdown from 'react-markdown';
 import Link from 'next/link';
 import Title from 'components/Title';
 import { getFileContent, getFiles, getSlugs } from 'helpers/files';
@@ -18,7 +19,9 @@ const GuestsIndex: NextPage<Props> = ({ guests, page }) => {
   return (
     <div className="grid gap-2">
       <Title title={page?.data?.title} />
-      <div>{page?.content}</div>
+      <div>
+        <ReactMarkdown>{page?.content}</ReactMarkdown>
+      </div>
       <div>
         <ul>
           {guests?.map((guest) => (

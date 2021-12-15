@@ -1,5 +1,6 @@
 import type { NextPage, GetStaticProps } from 'next';
 import Link from 'next/link';
+import ReactMarkdown from 'react-markdown';
 import Title from '../../components/Title';
 import { getFileContent, getFiles, getSlugs } from '../../helpers/files';
 
@@ -17,7 +18,9 @@ const ArtistsIndex: NextPage<Props> = ({ slugs, page }) => {
   return (
     <div className="grid gap-2">
       <Title title={page.data.title} />
-      <div>{page.content}</div>
+      <div>
+        <ReactMarkdown>{page?.content}</ReactMarkdown>
+      </div>
       <div>
         <ul>
           {slugs.map((path) => (
