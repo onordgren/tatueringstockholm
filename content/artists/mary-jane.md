@@ -4,8 +4,8 @@ social:
   facebook: facebook
   instagram: instagram
   twitter: twitter
-gallery: /images/2483a5_e394c929d18a499b8ce64145f6cc3b22_mv2.webp
 ---
+
 Mary Jane is a traveling artist who has been tattooing for over ten years.
 
 She specialises in geometrical tattoos and prefers to do her tattoos one dot at the time a technique called dotwork.
