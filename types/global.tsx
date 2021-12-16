@@ -17,7 +17,7 @@ export type Contact = {
 };
 
 export type Artist = {
-  slug: string;
+  slug?: string;
   data: {
     title: string;
     guest: boolean;
